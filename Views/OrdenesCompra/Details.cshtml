@@ -1,0 +1,41 @@
+@model Web_Inventario.Models.OrdenCompra
+
+@{
+    ViewData["Title"] = "Detalles de la Orden";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Fecha</dt>
+        <dd class="col-sm-10">@Model.Fecha.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">Proveedor</dt>
+        <dd class="col-sm-10">@Model.Proveedor?.Nombre</dd>
+    </dl>
+</div>
+
+<h4>Productos en la Orden</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detalle in Model.Detalles)
+        {
+            <tr>
+                <td>@detalle.Producto?.Nombre</td>
+                <td>@detalle.Cantidad</td>
+                <td>@detalle.PrecioUnitario</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Volver</a>
+

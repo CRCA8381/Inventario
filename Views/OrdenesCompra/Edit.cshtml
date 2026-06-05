@@ -1,0 +1,29 @@
+@model Web_Inventario.Models.OrdenCompra
+
+@{
+    ViewData["Title"] = "Editar Orden de Compra";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="OrdenCompraId" />
+
+    <div class="form-group">
+        <label asp-for="Fecha" class="control-label"></label>
+        <input asp-for="Fecha" class="form-control" type="date" />
+        <span asp-validation-for="Fecha" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProveedorId" class="control-label">Proveedor</label>
+        <select asp-for="ProveedorId" class="form-control" asp-items="ViewBag.ProveedorId"></select>
+        <span asp-validation-for="ProveedorId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <input type="submit" value="Guardar cambios" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+    </div>
+</form>
+

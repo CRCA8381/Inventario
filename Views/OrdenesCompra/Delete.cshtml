@@ -1,0 +1,24 @@
+@model Web_Inventario.Models.OrdenCompra
+
+@{
+    ViewData["Title"] = "Eliminar Orden de Compra";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>¿Estás seguro de que deseas eliminar esta orden?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Fecha</dt>
+        <dd class="col-sm-10">@Model.Fecha.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">Proveedor</dt>
+        <dd class="col-sm-10">@Model.Proveedor?.Nombre</dd>
+    </dl>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="OrdenCompraId" />
+    <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
